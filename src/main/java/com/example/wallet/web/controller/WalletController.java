@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/api/v1/wallet")
@@ -24,7 +25,8 @@ public class WalletController {
 
     @GetMapping("/{walletId}")
     public ResponseEntity<WalletBalanceResponse> getWalletBalance(@PathVariable UUID walletId) {
-        WalletBalanceResponse response = walletService.getWalletBalance(walletId);
+        CompletableFuture<WalletBalanceResponse> future = walletService.getWalletBalance(walletId);
+        WalletBalanceResponse response = future.join();
         return ResponseEntity.status(response.getHttpStatus().value()).body(response);
     }
 }

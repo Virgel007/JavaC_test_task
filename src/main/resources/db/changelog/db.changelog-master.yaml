@@ -14,3 +14,13 @@ databaseChangeLog:
               - column:
                   name: balance
                   type: decimal(10, 2)
+  - changeSet:
+      id: 2
+      author: Arkadiy Kruglov
+      changes:
+        - createIndex:
+            indexName: idx_id
+            tableName: wallet
+            columns:
+              - column:
+                  name: id
