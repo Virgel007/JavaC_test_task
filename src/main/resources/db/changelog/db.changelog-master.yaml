@@ -24,3 +24,25 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
+
+  - changeSet:
+      id: 3
+      author: Arkadiy Kruglov
+      changes:
+        - createTable:
+            tableName: wallet_dev
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: balance
+                  type: decimal(10, 2)
+        - createIndex:
+            indexName: idx_id
+            tableName: wallet_dev
+            columns:
+              - column:
+                  name: id

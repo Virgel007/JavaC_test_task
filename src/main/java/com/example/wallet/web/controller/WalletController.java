@@ -4,7 +4,6 @@ import com.example.wallet.service.WalletService;
 import com.example.wallet.web.dto.WalletBalanceResponse;
 import com.example.wallet.web.dto.WalletUpdateRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

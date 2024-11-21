@@ -1,6 +1,5 @@
 package com.example.wallet;
 
-import com.example.wallet.model.Wallet;
 import com.example.wallet.service.impl.WalletServiceImpl;
 import com.example.wallet.web.controller.WalletController;
 import com.example.wallet.web.dto.OperationType;
@@ -38,7 +37,7 @@ class WalletControllerTest {
     @InjectMocks
     private WalletController walletController;
     private MockMvc mockMvc;
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void setup() {
@@ -75,9 +74,6 @@ class WalletControllerTest {
     public void testUpdateWalletBalance() throws Exception {
         // Arrange
         UUID walletId = UUID.randomUUID();
-        Wallet wallet = new Wallet();
-        wallet.setId(walletId);
-        wallet.setBalance(BigDecimal.valueOf(100));
 
         WalletUpdateRequest request = new WalletUpdateRequest(walletId, OperationType.DEPOSIT, BigDecimal.valueOf(50));
 
