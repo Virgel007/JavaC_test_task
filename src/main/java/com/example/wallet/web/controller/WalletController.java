@@ -15,6 +15,7 @@ import java.util.concurrent.CompletableFuture;
 @RequestMapping("/api/v1/wallet")
 @RequiredArgsConstructor
 public class WalletController {
+
     private final WalletService walletService;
 
     @PostMapping

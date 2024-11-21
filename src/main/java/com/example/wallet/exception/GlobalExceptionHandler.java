@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import org.springframework.validation.FieldError;
 
@@ -97,5 +98,12 @@ public class GlobalExceptionHandler {
         log.error("Exception occurred", e);
 
         return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new WalletBalanceResponse("Error occurred", null, INTERNAL_SERVER_ERROR));
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<WalletBalanceResponse> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
+        log.error("Method argument type mismatch exception occurred", e);
+
+        return ResponseEntity.badRequest().body(new WalletBalanceResponse("Invalid wallet ID", null, BAD_REQUEST));
     }
 }
