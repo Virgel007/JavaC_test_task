@@ -1,13 +1,13 @@
-package com.example.test_task;
+package com.example.wallet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestTaskApplication {
+public class WalletApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestTaskApplication.class, args);
+		SpringApplication.run(WalletApplication.class, args);
 	}
 
 }
